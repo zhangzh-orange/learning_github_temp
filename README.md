@@ -64,4 +64,12 @@ git push -f origin <my-feature>
 
 9. Squash and merge (main branch holder do this on github)
 
-10. 
+10. Delete -feature branch at remote github.
+
+11. Delete -feature branch of local git:
+
+git branch -D <my-feature>
+
+12. Pull the latest update of main branch:
+
+git pull original master
