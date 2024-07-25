@@ -68,6 +68,8 @@ git push -f origin <my-feature>
 
 11. Delete -feature branch of local git:
 
+git checkout main
+
 git branch -D <my-feature>
 
 12. Pull the latest update of main branch:
