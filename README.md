@@ -1,77 +1,159 @@
-# learning_github_temp
+# GitHub Workflow Guide
 
------
+```
+# ===================================
+# Time	 :   2024/07/26
+# Author	:   Zehong Zhang
+# Contact:   zhang@fmp-berlin.de
+# ===================================
+```
 
-1. Clone repository:
+---
 
-git clone website
+## 1. Clone Repository
 
-2. Build a new branch, to save revised code, rather than save new code to main branch.
-This command is like copy main branch's code to your own branch.
+Clone the repository to your local machine:
 
-git checkout -b <my-feature>
+```
+git clone <repository-url>
+```
 
-3. Check difference between local and git:
+## 2. Create a New Branch
 
+Create a new branch to save your changes, rather than committing directly to the main branch:
+
+This command is to copy main branch's code to your own branch.
+
+```
+git checkout -b <my-feature-branch>
+```
+
+## 3. Debug or change the codes
+
+Work on the code as needed for your feature or bug fix.
+
+## 4. Check Differences
+
+View the differences between your local changes and the local branch. At this point, your code is not saved into the local Git history and not committed to the remote repository (GitHub):
+
+```
 git diff
+```
 
-4. Add changed_file to git:
+Press `q` to exit the diff view.
 
-git add <changed_file> / git add .
+## 5. Stage Changes
 
-5. Commit changed files to git, and enter the commit message for your changes. :
+Stage the changes for the next commit:
 
+```
+git add <changed-file-name>   # To add specific files
+git add .                     # To add all changed files
+```
+
+## 6.Commit Changes
+
+Commit the staged changes with a descriptive commit message:
+
+```
+git commit -m "Your commit message"
+```
+
+If you prefer to use the default editor (e.g., Vim), recommend, because in this way you can record your experiment in detail, and more easily to change with editor:
+
+```
 git commit
+```
 
-Then you will enter into a editor page for editting message. (my default editor is vim)
+Follow these steps to write your commit message in Vim:
 
-Press "c" to edit the commit message.
+1. Press `i` to start editing.
+2. Write your commit message.
+3. Press `Esc`, then type `:wq` to save and exit edit mode.
+4. Press `ZZ` (upper) to exit vim editor and back to git console.
 
-Press "Esc", input "wq" to back to vim start mode, and save the message.
+## 7. Push Changes
 
-Press "ZZ" to exit vim editor and back to git console.
+Push your changes to GitHub, creating the new branch on the remote repository:
 
-6. Push your code to github, with building a new branch (not save into main branch):
-
+```
 git push origin <my-feature>
+```
 
-7. Sometimes when we commit code to our branch, the main branch's code have has some updates.
-We need to synchronize the main branch and our own branch, and check if our own update still work.
+You can repeat steps 3 to 7 to gradually refine the code and save it at any time. When you think your phased tasks are done, you can apply to merge your change to the main branch (steps 8 to 12).
 
-7.1 Update our local main branch:
+## 8. Synchronize Branches
 
-7.1.1 Switch to the main branch:
+Sometimes, when you commit code to your branch, the main branch's code may have updates. You need to synchronize the main branch and your feature branch to ensure your updates still work. And solve the conflicts between your code and the latest main code.
 
+### 8.1 Update Local Main Branch
+
+Switch to the main branch:
+
+```
 git checkout main
+```
 
-7.1.2 Update, synchronize the remote main branch to our local main branch:
+Pull the latest changes from the remote main branch:
 
-git pull origin master
+```
+git pull origin main
+```
 
-7.2 Update our own -feature branch:
+### 8.2 Rebase Feature Branch
 
-git checkout <my-feature>
+Switch back to your feature branch:
 
-git rebase main # synchronize the main branch to our own -feature branch
+```
+git checkout <my-feature-branch>
+```
 
-If rebase conflict occurs, we need to choose which one to remain manually.
+Rebase your feature branch onto the updated main branch:
 
-7.3 Push rebase code to github (force)
+```
+git rebase main
+```
 
-git push -f origin <my-feature>
+Resolve any conflicts that occur during the rebase process.
 
-8. Pull request, merge your code to main branch (feature branch holder do this on github)
+### 8.3 Push Rebased Changes (Force Push)
 
-9. Squash and merge (main branch holder do this on github)
+After resolving conflicts and completing the rebase, force push your changes to the remote feature branch:
 
-10. Delete -feature branch at remote github.
+```
+git push -f origin <my-feature-branch>
+```
 
-11. Delete -feature branch of local git:
+## 9. Create Pull Request
 
+On GitHub, open a pull request to merge your feature branch into the main branch.
+
+github => work repo => Pull requests => New pull request
+
+## 10. Squash and Merge
+
+The **repository maintainer** will squash and merge your pull request into the main branch on GitHub.
+
+## 11. Delete Remote Feature Branch
+
+After the pull request is merged, delete the remote feature branch:
+
+On GitHub, go to the branches section and delete the merged feature branch.
+
+## 12. Delete Local Feature Branch
+
+Switch to the main branch and delete your local feature branch:
+
+```
 git checkout main
+git branch -D <my-feature-branch>
+```
 
-git branch -D <my-feature>
+## 13. Update Local Main Branch
 
-12. Pull the latest update of main branch:
+Pull the latest updates from the remote main branch to your local repository, and start a new round of improvements:
 
-git pull original master
+```
+git pull origin main
+```
+
