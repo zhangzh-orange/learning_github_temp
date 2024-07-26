@@ -40,6 +40,8 @@ View the differences between your local changes and the local branch. At this po
 git diff
 ```
 
+Press `q` to exit the diff view.
+
 ## 5. Stage Changes
 
 Stage the changes for the next commit:
@@ -67,15 +69,8 @@ Follow these steps to write your commit message in Vim:
 
 1. Press `i` to start editing.
 2. Write your commit message.
-3. Press `Esc`, then type `:wq` to save and exit.
-
-Then you will enter into a editor page for editting message. (my default editor is vim)
-
-Press "c" to edit the commit message.
-
-Press "Esc", input "wq" to back to vim start mode, and save the message.
-
-Press "ZZ" to exit vim editor and back to git console.
+3. Press `Esc`, then type `:wq` to save and exit edit mode.
+4. Press `ZZ` (upper) to exit vim editor and back to git console.
 
 ## 7. Push Changes
 
@@ -85,7 +80,7 @@ Push your changes to GitHub, creating the new branch on the remote repository:
 git push origin <my-feature>
 ```
 
-#You can repeat step 3 to 7 to gradually refine the code and save it at any thime, and when you think your phased tasks is done, you can apply to merge your change to the main branch (step 8 to 12).
+You can repeat steps 3 to 7 to gradually refine the code and save it at any time. When you think your phased tasks are done, you can apply to merge your change to the main branch (steps 8 to 12).
 
 ## 8. Synchronize Branches
 
